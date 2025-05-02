@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResuMatch - AI Resume Matching Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            transition: transform 0.3s ease;
+        }
+        .card:hover .feature-icon {
+            transform: scale(1.2);
+        }
+        .btn-primary {
+            background-image: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-indigo-600">ResuMatch</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="/" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="/matchresume" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Match Resumes
+                        </a>
+                        <a href="/history" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            History
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="/matchresume" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Start Matching
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <!-- Mobile menu button -->
+                    <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="mobile-menu hidden sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="/" class="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Home
+                </a>
+                <a href="/matchresume" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Match Resumes
+                </a>
+                <a href="/history" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    History
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 lg:pr-12 animate-fadeIn">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                    Match the Right Resume to the Right Job
+                </h1>
+                <p class="mt-3 text-xl">
+                    Our AI-powered platform analyzes job descriptions and resumes to find the perfect match, saving you time and ensuring you find the best candidates.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <a href="/matchresume" class="btn-primary flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                        Start Matching
+                    </a>
+                    <a href="#features" class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="lg:w-1/2 mt-10 lg:mt-0 flex justify-center animate-fadeIn" style="animation-delay: 0.3s;">
+                <img src="/static/hero-image.svg" alt="Resume matching illustration" class="h-96 w-auto" onerror="this.src='/api/placeholder/600/400'; this.onerror=null;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center animate-fadeIn" style="animation-delay: 0.4s;">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Smart Resume Matching Solutions
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Our platform uses advanced AI to analyze and match resumes to job descriptions with high accuracy.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <div class="card pt-6 animate-fadeIn" style="animation-delay: 0.6s;">
+                        <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-md">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                        <i class="fas fa-robot feature-icon text-white text-xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">AI-Powered Analysis</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Our advanced AI algorithms analyze the content of both resumes and job descriptions to find the most relevant matches based on skills, experience, and keywords.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="card pt-6 animate-fadeIn" style="animation-delay: 0.8s;">
+                        <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-md">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                        <i class="fas fa-chart-pie feature-icon text-white text-xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">Detailed Skill Analysis</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Get comprehensive insights into each candidate's skill set and how well they match with your job requirements, categorized into technical and soft skills.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="card pt-6 animate-fadeIn" style="animation-delay: 1.0s;">
+                        <div class="flow-root bg-white rounded-lg px-6 pb-8 shadow-md">
+                            <div class="-mt-6">
+                                <div>
+                                    <span class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
+                                        <i class="fas fa-history feature-icon text-white text-xl"></i>
+                                    </span>
+                                </div>
+                                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">History Tracking</h3>
+                                <p class="mt-5 text-base text-gray-500">
+                                    Keep track of all your previous matching sessions, easily review past analyses, and compare results across different job descriptions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center animate-fadeIn" style="animation-delay: 1.2s;">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">How It Works</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Simple 3-Step Process
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                    Our platform makes it easy to find the best candidates for your job in just three simple steps.
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+                    <!-- Step 1 -->
+                    <div class="text-center animate-fadeIn" style="animation-delay: 1.4s;">
+                        <div class="relative">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-500 text-white text-2xl font-bold mx-auto">
+                                1
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-lg font-medium text-gray-900">Upload Job Description</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Enter or paste your job description with all required skills and qualifications.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="text-center animate-fadeIn" style="animation-delay: 1.6s;">
+                        <div class="relative">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-500 text-white text-2xl font-bold mx-auto">
+                                2
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-lg font-medium text-gray-900">Upload Resumes</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Upload multiple resumes in PDF, DOCX, or TXT format for analysis.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="text-center animate-fadeIn" style="animation-delay: 1.8s;">
+                        <div class="relative">
+                            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-indigo-500 text-white text-2xl font-bold mx-auto">
+                                3
+                            </div>
+                        </div>
+                        <h3 class="mt-6 text-lg font-medium text-gray-900">Get Detailed Analysis</h3>
+                        <p class="mt-2 text-base text-gray-500">
+                            Receive comprehensive analysis with rankings, skill matches, and recommendations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between animate-fadeIn" style="animation-delay: 2.0s;">
+            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                <span class="block">Ready to find your perfect match?</span>
+                <span class="block text-indigo-600">Start using ResuMatch today.</span>
+            </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="/matchresume" class="btn-primary inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                        Get started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:justify-start space-x-6">
+                    <a href="https://www.linkedin.com/in/kartika-k2810/" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">LinkedIn</span>
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/kartika-k" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">GitHub</span>
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+                <p class="mt-8 text-base text-gray-400 md:mt-0">
+                    &copy; 2025 Kartika Kannojiya. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Animation for elements when they come into view
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-fadeIn').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
