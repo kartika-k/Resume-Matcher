@@ -1,0 +1,39 @@
+<!-- multiple_resumes.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Multiple Resumes</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Match Multiple Resumes</h1>
+        <div class="card">
+            <nav class="breadcrumb">
+                <a href="/">Home</a> &gt; Recruiter
+            </nav>
+            
+            {% if message %}
+            <div class="alert">{{ message }}</div>
+            {% endif %}
+            
+            <form action="/match_multiple" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="resumes">Upload Candidate Resumes (PDF, DOCX, or TXT):</label>
+                    <input type="file" id="resumes" name="resumes" accept=".pdf,.docx,.txt" multiple required>
+                    <small>Hold Ctrl (or Cmd on Mac) to select multiple files</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="job_description">Paste Job Description:</label>
+                    <textarea id="job_description" name="job_description" rows="10" required></textarea>
+                </div>
+                
+                <button type="submit" class="button primary">Find Top Candidates</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

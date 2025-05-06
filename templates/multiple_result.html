@@ -1,0 +1,56 @@
+<!-- multiple_result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Candidate Match Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Candidate Match Results</h1>
+        <div class="card">
+            <nav class="breadcrumb">
+                <a href="/">Home</a> &gt; <a href="/multiple">Recruiter</a> &gt; Results
+            </nav>
+            
+            <div class="result-section">
+                <h2>Top Matching Candidates</h2>
+                
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Resume</th>
+                            <th>Match Score</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resume, score in top_resumes_with_scores %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ resume }}</td>
+                            <td>{{ score }}%</td>
+                            <td><a href="/downloads/{{ resume }}" class="download-link">Download</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <h3>Suggestions:</h3>
+                <ul class="suggestion-list">
+                    {% for suggestion in suggestions %}
+                    <li>{{ suggestion }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <div class="button-container">
+                    <a href="/multiple" class="button secondary">Match More Resumes</a>
+                    <a href="/" class="button primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

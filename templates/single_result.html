@@ -1,0 +1,42 @@
+<!-- single_result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Match Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Match Results</h1>
+        <div class="card">
+            <nav class="breadcrumb">
+                <a href="/">Home</a> &gt; <a href="/single">Job Seeker</a> &gt; Results
+            </nav>
+            
+            <div class="result-section">
+                <h2>Match Score for {{ resume_name }}</h2>
+                
+                <div class="score-container">
+                    <div class="score-circle" style="--percentage: {{ match_percentage }}%">
+                        <div class="score-value">{{ match_percentage }}%</div>
+                    </div>
+                </div>
+                
+                <h3>Suggestions for Improvement:</h3>
+                <ul class="suggestion-list">
+                    {% for suggestion in suggestions %}
+                    <li>{{ suggestion }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <div class="button-container">
+                    <a href="/single" class="button secondary">Check Another Resume</a>
+                    <a href="/" class="button primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

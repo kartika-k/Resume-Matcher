@@ -1,0 +1,38 @@
+<!-- single_resume.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Your Resume</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Match Your Resume</h1>
+        <div class="card">
+            <nav class="breadcrumb">
+                <a href="/">Home</a> &gt; Job Seeker
+            </nav>
+            
+            {% if message %}
+            <div class="alert">{{ message }}</div>
+            {% endif %}
+            
+            <form action="/match_single" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="resume">Upload Your Resume (PDF, DOCX, or TXT):</label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.docx,.txt" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="job_description">Paste Job Description:</label>
+                    <textarea id="job_description" name="job_description" rows="10" required></textarea>
+                </div>
+                
+                <button type="submit" class="button primary">Match Resume</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
